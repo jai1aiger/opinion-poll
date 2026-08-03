@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEC E-Cell IIT Bombay - Student Team Submissions Portal</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- html2pdf.js CDN for client-side PDF export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Direct Access Main App Container -->
+    <div class="app-container" id="mainApp">
+        <!-- Navbar -->
+        <header class="navbar">
+            <div class="logo-group">
+                <i class="fa-solid fa-rocket logo-icon"></i>
+                <div>
+                    <h1>Team Titan - NEC 2026 Portal</h1>
+                    <p class="subtitle">National Entrepreneurship Challenge | E-Cell, IIT Bombay</p>
+                </div>
+            </div>
+            <div class="header-actions">
+                <span class="badge"><i class="fa-solid fa-users"></i> 12 Team Members</span>
+                <button class="btn btn-outline" id="exportAllBtn"><i class="fa-solid fa-file-pdf"></i> Download All 12 PDFs</button>
+            </div>
+        </header>
+
+        <!-- Main Workspace -->
+        <main class="workspace">
+            <!-- Sidebar: Member Selector -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <h3><i class="fa-solid fa-list-check"></i> Select Your Name</h3>
+                    <p>Click your name to edit your PDF details</p>
+                </div>
+                <ul class="member-list" id="memberList">
+                    <!-- Member items populated by JS -->
+                </ul>
+            </aside>
+
+            <!-- Main Editor & Preview Area -->
+            <section class="editor-area">
+                <!-- Tabs -->
+                <div class="tab-header">
+                    <button class="tab-btn active" data-tab="edit"><i class="fa-solid fa-pen-to-square"></i> Edit Details & Role</button>
+                    <button class="tab-btn" data-tab="preview"><i class="fa-solid fa-eye"></i> Live PDF Preview</button>
+                </div>
+
+                <!-- Tab Content: Edit Form -->
+                <div class="tab-content active" id="tab-edit">
+                    <div class="card form-card">
+                        <div class="card-header">
+                            <h2><i class="fa-solid fa-user-gear"></i> Member Profile & Role Description</h2>
+                            <span class="save-status" id="saveStatus"><i class="fa-solid fa-circle-check"></i> Auto-saved locally</span>
+                        </div>
+                        <form id="profileForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="memberName"><i class="fa-solid fa-id-card"></i> Full Name</label>
+                                    <input type="text" id="memberName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="memberRole"><i class="fa-solid fa-briefcase"></i> Ground-Level Team Role</label>
+                                    <input type="text" id="memberRole" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="motivationText"><i class="fa-solid fa-lightbulb"></i> My Motivation (Student Perspective)</label>
+                                <textarea id="motivationText" rows="6" required></textarea>
+                                <span class="help-text">Tip: Mention lab experiences, ground testing, hostel work sessions, or practical student hurdles.</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="expectationsText"><i class="fa-solid fa-bullseye"></i> My Expectations from E-Cell</label>
+                                <textarea id="expectationsText" rows="6" required></textarea>
+                                <span class="help-text">Tip: Mention what you hope to learn from mentors, E-Cell workshops, or student startup guidance.</span>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-secondary" id="resetBtn"><i class="fa-solid fa-rotate-left"></i> Reset to Default</button>
+                                <button type="button" class="btn btn-primary" id="downloadPdfBtn"><i class="fa-solid fa-download"></i> Generate & Download My PDF</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Tab Content: Live Preview -->
+                <div class="tab-content" id="tab-preview">
+                    <div class="preview-actions">
+                        <p><i class="fa-solid fa-circle-info"></i> This is an exact preview of how your PDF document will be generated.</p>
+                        <button class="btn btn-primary btn-sm" id="downloadPdfPreviewBtn"><i class="fa-solid fa-file-pdf"></i> Download PDF Now</button>
+                    </div>
+
+                    <!-- PDF Render Target -->
+                    <div class="pdf-page-container">
+                        <div class="pdf-page" id="pdfTemplate">
+                            <div class="pdf-header">
+                                <h1 class="pdf-title" id="pdfDocTitle">National Entrepreneurship Challenge (NEC)</h1>
+                                <h2 class="pdf-subtitle">E-Cell, IIT Bombay</h2>
+                                <div class="pdf-divider"></div>
+                            </div>
+                            <div class="pdf-meta">
+                                <p><strong>Name:</strong> <span id="pdfName"></span></p>
+                                <p><strong>Team Role:</strong> <span id="pdfRole"></span></p>
+                            </div>
+                            
+                            <div class="pdf-section">
+                                <h3 class="pdf-section-title">My Motivation</h3>
+                                <div class="pdf-body" id="pdfMotivation"></div>
+                            </div>
+
+                            <div class="pdf-section">
+                                <h3 class="pdf-section-title">My Expectations from E-Cell</h3>
+                                <div class="pdf-body" id="pdfExpectations"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
