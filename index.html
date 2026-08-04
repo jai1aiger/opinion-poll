@@ -28,6 +28,9 @@
                 </div>
             </div>
             <div class="header-actions">
+                <span class="badge" id="syncStatusBadge" style="background: rgba(16, 185, 129, 0.15); color: #34d399;">
+                    <i class="fa-solid fa-cloud"></i> Live Cloud Synced
+                </span>
                 <span class="badge" id="headerMemberBadge"><i class="fa-solid fa-users"></i> 12 Team Members</span>
                 <button class="btn btn-outline" id="exportAllBtn"><i class="fa-solid fa-file-pdf"></i> Download All PDFs</button>
             </div>
@@ -38,7 +41,12 @@
             <!-- Sidebar: Member Selector -->
             <aside class="sidebar">
                 <div class="sidebar-header">
-                    <h3><i class="fa-solid fa-list-check"></i> Select Your Name</h3>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <h3><i class="fa-solid fa-list-check"></i> Select Your Name</h3>
+                        <button class="btn btn-outline btn-sm" id="refreshCloudBtn" title="Sync latest candidate list from cloud">
+                            <i class="fa-solid fa-rotate"></i> Sync
+                        </button>
+                    </div>
                     <p>Click your name to edit your PDF details</p>
                     <button class="btn btn-primary btn-block" id="addCandidateBtn" style="margin-top: 12px; font-size: 13px;">
                         <i class="fa-solid fa-user-plus"></i> Add Candidate (<span id="candidateCount">12</span>/15)
@@ -62,7 +70,7 @@
                     <div class="card form-card">
                         <div class="card-header">
                             <h2><i class="fa-solid fa-user-gear"></i> Member Profile & Role Description</h2>
-                            <span class="save-status" id="saveStatus"><i class="fa-solid fa-circle-check"></i> Auto-saved locally</span>
+                            <span class="save-status" id="saveStatus"><i class="fa-solid fa-cloud-arrow-up"></i> Auto-saved live to Cloud</span>
                         </div>
                         <form id="profileForm">
                             <div class="form-row">
