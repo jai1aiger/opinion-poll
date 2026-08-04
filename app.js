@@ -12,9 +12,9 @@ const defaultTeamMembers = [
         id: "d_tarun_kumar",
         filename: "NEC_ECell_Motivation_Expectations_D_Tarun_Kumar.pdf",
         name: "D. Tarun Kumar",
-        role: "Software Development & AI-ML Lead (Product Engineering)",
-        motivation: "My motivation comes from developing AI-ML systems and real-time tracking dashboards, such as my Railway Fault Diagnosis system for detecting track cracks and train bogie defects. I enjoy building live monitoring dashboards that visualize real-time technical data clearly.",
-        expectations: "I expect E-Cell to guide our technical team on scaling AI-ML software tools into full-fledged student startup products and connecting with industry tech mentors."
+        role: "Product & Service Engineering Lead",
+        motivation: "My motivation comes from developing software, AI-ML systems, and engineering real-time tracking dashboards, such as my Railway Fault Diagnosis system for detecting track cracks and train bogies defaults. I enjoy building live monitoring dashboards that visualize real-time technical data clearly.",
+        expectations: "I expect E-Cell to guide our engineering team on scaling product and service architectures into full-fledged student startup products and connecting with industry tech mentors."
     },
     {
         id: "b_preethi",
@@ -52,9 +52,9 @@ const defaultTeamMembers = [
         id: "subhashini_ranga",
         filename: "NEC_ECell_Motivation_Expectations_Subhashini_Ranga.pdf",
         name: "Subhashini Ranga",
-        role: "Product Marketing & Visual Designer (Marketing & Media)",
-        motivation: "My motivation comes from creative content creation, visual design (Canva/Figma), and branding. In my InternSetu platform project, I designed user-focused features, created promotional campaigns, and led visual engagement for Google Student Ambassador (GSA) outreach.",
-        expectations: "I expect E-Cell to provide guidance on product marketing strategies, brand identity development, and digital audience engagement."
+        role: "Product Marketing & Social Media Lead",
+        motivation: "My motivation comes from creative content creation, visual design (Canva/Figma), social media handling, and branding. In my InternSetu platform project, I designed user-focused features, created promotional campaigns, and led visual engagement for Google Student Ambassador (GSA) outreach.",
+        expectations: "I expect E-Cell to provide guidance on product marketing strategies, social media handle management, brand identity development, and digital audience engagement."
     },
     {
         id: "m_rajesh",
@@ -76,7 +76,7 @@ const defaultTeamMembers = [
         id: "tarun_dasari",
         filename: "NEC_ECell_Motivation_Expectations_Tarun_Kumar_Dasari.pdf",
         name: "Tarun Kumar Dasari",
-        role: "Field Execution Lead (Operations & Groundwork)",
+        role: "Field Operations Specialist (Operations & Groundwork)",
         motivation: "I believe you can't test a project just by sitting inside a college classroom. My motivation comes from taking our prototype outside campus, testing it in real conditions, and seeing how people actually use it.",
         expectations: "I expect E-Cell to teach us how to conduct field tests systematically. As students, we know how to build a basic model, but we need to learn how to gather proper user feedback and improve our design based on real-world usage."
     },
@@ -100,9 +100,9 @@ const defaultTeamMembers = [
         id: "pavani",
         filename: "NEC_ECell_Motivation_Expectations_Bathula_Chinmai_Pavani.pdf",
         name: "Bathula Chinmai Pavani",
-        role: "Market Survey & User Insights Lead (Product Research)",
-        motivation: "My motivation comes from market research and talking to potential users. Before building a project, we need to know if people actually need it and what existing solutions they currently use.",
-        expectations: "I expect E-Cell to teach us structured methods for student market research, customer validation, and survey form analysis."
+        role: "Execution & Field Operations Lead",
+        motivation: "My motivation comes from market research, field testing, and on-the-ground operational execution. Before deploying our project, I focus on conducting field surveys, talking to potential users, and executing ground operations.",
+        expectations: "I expect E-Cell to teach us structured methods for field execution, customer validation, ground operations, and survey form analysis."
     },
     {
         id: "hasini",
