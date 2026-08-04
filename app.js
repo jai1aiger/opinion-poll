@@ -1,4 +1,4 @@
-// 15 Ground-Level Student Team Member Profiles
+// 15 Consolidated Unique Team Member Profiles
 const defaultTeamMembers = [
     {
         id: "viswanath",
@@ -9,116 +9,116 @@ const defaultTeamMembers = [
         expectations: "I expect E-Cell to help me step out of my shell and build confidence in communication. While I can coordinate team tasks and technical work, I want to learn how to present our student project clearly and confidently to judges without getting nervous.\n\nThrough NEC, I hope to learn how successful student startups get started, how to manage team responsibilities effectively, and how to turn a college project into something real with proper guidance from mentors."
     },
     {
-        id: "rajesh",
+        id: "d_tarun_kumar",
+        filename: "NEC_ECell_Motivation_Expectations_D_Tarun_Kumar.pdf",
+        name: "D. Tarun Kumar",
+        role: "Software Development & AI-ML Lead (Product Engineering)",
+        motivation: "My motivation comes from developing AI-ML systems and real-time tracking dashboards, such as my Railway Fault Diagnosis system for detecting track cracks and train bogie defects. I enjoy building live monitoring dashboards that visualize real-time technical data clearly.",
+        expectations: "I expect E-Cell to guide our technical team on scaling AI-ML software tools into full-fledged student startup products and connecting with industry tech mentors."
+    },
+    {
+        id: "b_preethi",
+        filename: "NEC_ECell_Motivation_Expectations_B_Preethi.pdf",
+        name: "B. Preethi",
+        role: "Research & Pitch Support (Product Research & ML)",
+        motivation: "I am motivated by research, machine learning model training, and building predictive analytics dashboards, such as my Customer Churn Prediction and Retention Recommendation system. I enjoy translating complex ML model outputs into easy-to-understand insights.",
+        expectations: "I expect E-Cell to provide research guidance, pitch presentation mentoring, and training on translating ML data into compelling startup pitches."
+    },
+    {
+        id: "ch_neelaveni",
+        filename: "NEC_ECell_Motivation_Expectations_Ch_Neelaveni.pdf",
+        name: "Ch. Neelaveni",
+        role: "Data Collection & Testing Lead (Product QA & Media)",
+        motivation: "My drive comes from data collection, testing/debugging, and building practical platforms like my Multilingual Road Potholes Detection system with GPS and image validation. I also enjoy managing social media handles to communicate project impact.",
+        expectations: "I look to E-Cell for mentorship on systematic software QA testing, structured data collection workflows, and user engagement strategies."
+    },
+    {
+        id: "a_sai_padma",
+        filename: "NEC_ECell_Motivation_Expectations_A_Sai_Padma.pdf",
+        name: "A. Sai Padma",
+        role: "ML Engineer & Web UI Designer (Product Marketing & Dev)",
+        motivation: "My passion spans ML model training, full-stack web development, and predictive analytics, as demonstrated in my E-Commerce Delivery Prediction project for tracking on-time vs. delayed shipments using Python, SQL, and PowerBI.",
+        expectations: "I expect E-Cell to guide us on deploying production-ready ML models, structuring full-stack web apps, and optimizing user interfaces."
+    },
+    {
+        id: "govindu",
+        filename: "NEC_ECell_Motivation_Expectations_Lokavarapu_Govindu.pdf",
+        name: "Lokavarapu Govindu",
+        role: "Data Analyst & Finance Manager (Operations & Budgeting)",
+        motivation: "I am motivated by ground execution, project expense tracking, and data analytics, having worked on impactful projects like Kisan Seva (Leaf Disease Detection) and E-Commerce Dashboards using Python, Excel, PowerBI, and AI tools.",
+        expectations: "I expect E-Cell to provide practical training on field data collection, product manufacturing cost estimation, and small startup budget management."
+    },
+    {
+        id: "subhashini_ranga",
+        filename: "NEC_ECell_Motivation_Expectations_Subhashini_Ranga.pdf",
+        name: "Subhashini Ranga",
+        role: "Product Marketing & Visual Designer (Marketing & Media)",
+        motivation: "My motivation comes from creative content creation, visual design (Canva/Figma), and branding. In my InternSetu platform project, I designed user-focused features, created promotional campaigns, and led visual engagement for Google Student Ambassador (GSA) outreach.",
+        expectations: "I expect E-Cell to provide guidance on product marketing strategies, brand identity development, and digital audience engagement."
+    },
+    {
+        id: "m_rajesh",
         filename: "NEC_ECell_Motivation_Expectations_Madiki_Rajesh.pdf",
         name: "Madiki Rajesh",
-        role: "Hardware & Electronics Specialist (Product Engineering)",
-        motivation: "My passion is working hands-on with hardware--soldering microcontrollers, connecting sensors on breadboards, and testing circuits in our lab. Last month, I spent hours troubleshooting a loose wire connection on our sensor module, which taught me that building a working prototype takes a lot of patience. A breadboard setup on a lab desk is just the first step.\n\nWorking on this student startup isn't about flashy titles for me; it's about the excitement of seeing a circuit board actually work and solve a real problem. I want to keep experimenting, learning from mistakes, and building reliable hardware with our team.",
-        expectations: "I expect E-Cell to help us move beyond basic breadboard setups. In college labs we learn basic theory, but we rarely learn how to design clean custom PCBs or source affordable electronic components on a tight student budget.\n\nThrough NEC, I want to get practical advice from hardware mentors, learn how to design better enclosures for our project, and figure out how student teams can build durable hardware prototypes without overspending."
+        role: "Hardware & Electronics Lead (Product Engineering)",
+        motivation: "My passion is working hands-on with hardware--soldering microcontrollers, connecting sensors on breadboards, and testing circuits in our lab. I also engage in video production, screenplay writing, and media content creation for our project promotions.",
+        expectations: "I expect E-Cell to help us move beyond basic breadboard setups, design custom PCBs, and guide us on creating high-impact media pitch videos."
     },
     {
         id: "lokesh",
         filename: "NEC_ECell_Motivation_Expectations_Sivarathri_Lokesh.pdf",
         name: "Sivarathri Lokesh",
-        role: "Software & Platform Developer (Product Engineering)",
-        motivation: "My motivation comes from writing code that brings our hardware to life. As a student developer, I spend time writing microcontroller firmware, searching forums like Stack Overflow to fix bugs, and creating simple web dashboards for our project data.\n\nBuilding software for a student startup is exciting because it takes what we learn in computer science classes and applies it to a real project. I want our code to be simple, fast, and reliable so that anyone using our system has a smooth experience.",
-        expectations: "I am looking to E-Cell for guidance on how to structure software for real-world use. In college assignments, we write code for grades, but here we need to write code that real people can rely on.\n\nI expect NEC to help me learn best practices for hosting our web backend affordably, connecting hardware data smoothly, and turning a student coding project into a functional app under the guidance of tech mentors."
+        role: "Software & Firmware Developer (Product Engineering)",
+        motivation: "My motivation comes from writing code that brings our hardware to life. As a student developer, I spend time writing microcontroller firmware, searching forums like Stack Overflow to fix bugs, and creating simple web dashboards for our project data.",
+        expectations: "I expect NEC to help me learn best practices for hosting our web backend affordably, connecting hardware data smoothly, and turning a student coding project into a functional app under the guidance of tech mentors."
     },
     {
-        id: "tarun",
+        id: "tarun_dasari",
         filename: "NEC_ECell_Motivation_Expectations_Tarun_Kumar_Dasari.pdf",
         name: "Tarun Kumar Dasari",
         role: "Field Execution Lead (Operations & Groundwork)",
-        motivation: "I believe you can't test a project just by sitting inside a college classroom. My motivation comes from taking our prototype outside campus, testing it in real conditions, and seeing how people actually use it.\n\nWhether it's testing our setup under direct sunlight or getting honest feedback from local vendors, ground testing shows us what's working and what breaks. Doing this groundwork helps our team fix problems early and build something truly useful.",
-        expectations: "I expect E-Cell to teach us how to conduct field tests systematically. As students, we know how to build a basic model, but we need to learn how to gather proper user feedback and improve our design based on real-world usage.\n\nThrough NEC, I hope to learn from experienced founders about running ground operations, talking to early adopters, and making our student project practical for everyday users."
+        motivation: "I believe you can't test a project just by sitting inside a college classroom. My motivation comes from taking our prototype outside campus, testing it in real conditions, and seeing how people actually use it.",
+        expectations: "I expect E-Cell to teach us how to conduct field tests systematically. As students, we know how to build a basic model, but we need to learn how to gather proper user feedback and improve our design based on real-world usage."
     },
     {
         id: "sanjay",
         filename: "NEC_ECell_Motivation_Expectations_Sanjay_Kumar_Pedini.pdf",
         name: "Sanjay Kumar Pedini",
         role: "Pitch & Communication Lead (Commercial Strategy)",
-        motivation: "As our team's coordinator and communication lead, my motivation is to connect our technical work with the outside world. I realized early on that even if our team builds a great prototype in the lab, it won't make an impact unless we can explain our idea clearly to others.\n\nI handle outreach, coordinate with mentors, organize our team presentation slides, and keep everyone updated. For me, entrepreneurship is about teamwork, clear communication, and sharing our vision with enthusiasm.",
-        expectations: "I expect E-Cell to help me improve my presentation and storytelling skills. I want to learn how to build a clean, effective student pitch deck and explain our project clearly to judges and mentors.\n\nThrough NEC, I aim to connect our student team with incubators, learn from experienced speakers, and gain confidence in representing our project at national student competitions."
-    },
-    {
-        id: "saipadma",
-        filename: "NEC_ECell_Motivation_Expectations_Althi_Saipadma.pdf",
-        name: "Althi Saipadma",
-        role: "Visual & Web UI Designer (Product Marketing)",
-        motivation: "My motivation comes from design and digital media. I enjoy creating posters on Canva, managing our team's social media pages, and designing a simple, clean web interface for our project. Good visuals help people understand what our student team is building.\n\nI want to make sure our app screens and digital content look friendly, professional, and easy to navigate for non-technical users. Presenting our project cleanly online gives our team a strong identity.",
-        expectations: "I look to E-Cell for guidance on simple UI/UX design principles and digital outreach for student startups.\n\nI expect NEC to help me understand how to design user-friendly screens, showcase our project online effectively, and learn how small student teams can build an engaged audience for their ideas."
+        motivation: "As our team's coordinator and communication lead, my motivation is to connect our technical work with the outside world. I handle outreach, coordinate with mentors, organize our team presentation slides, and keep everyone updated.",
+        expectations: "I expect E-Cell to help me improve my presentation and storytelling skills. I want to learn how to build a clean, effective student pitch deck and explain our project clearly to judges and mentors."
     },
     {
         id: "mohan",
         filename: "NEC_ECell_Motivation_Expectations_Tanara_Mohan.pdf",
         name: "Tanara Mohan",
         role: "Hardware Assembly & Fabrication (Product Engineering)",
-        motivation: "Working in the hardware section alongside Rajesh, my drive comes from physical assembly and soldering. I focus on mounting components securely, cutting project boxes, and organizing our lab tools so that everything stays neat and safe.\n\nIt's really satisfying to see loose wires and components turn into a sturdy, handheld box. My focus is on making sure our hardware build is neat, durable, and doesn't fall apart during testing or transport.",
-        expectations: "I expect E-Cell to teach us practical hardware assembly techniques and safety measures for student projects.\n\nThrough NEC, I want to learn how to make clean product enclosures, protect circuits from overheating, and build reliable hardware prototypes on a student budget with guidance from workshop mentors."
-    },
-    {
-        id: "govindu",
-        filename: "NEC_ECell_Motivation_Expectations_Lokavarapu_Govindu.pdf",
-        name: "Lokavarapu Govindu",
-        role: "Product Budget & Finance Analyst (Commercial Strategy)",
-        motivation: "My interest is in tracking our team's project expenses and budgeting. As students, we work with limited funds, so it's important to track every rupee spent on components, prototyping materials, and travel for testing.\n\nI keep track of component costs and help calculate how much our product would cost if we produced it for real users. My goal is to make sure our student project remains financially practical and affordable.",
-        expectations: "I am looking to E-Cell for simple, practical advice on startup budgeting and cost management.\n\nI expect NEC to teach us how to estimate product manufacturing costs, manage small project budgets efficiently, and understand how student startups can apply for small grants and competition funding."
+        motivation: "Working in the hardware section alongside Rajesh, my drive comes from physical assembly and soldering. I focus on mounting components securely, cutting project boxes, and organizing our lab tools so that everything stays neat and safe.",
+        expectations: "I expect E-Cell to teach us practical hardware assembly techniques and safety measures for student projects, helping us build durable enclosures on a student budget."
     },
     {
         id: "pavani",
         filename: "NEC_ECell_Motivation_Expectations_Bathula_Chinmai_Pavani.pdf",
         name: "Bathula Chinmai Pavani",
         role: "Market Survey & User Insights Lead (Product Research)",
-        motivation: "My motivation comes from market research and talking to potential users. Before building a project, we need to know if people actually need it and what existing solutions they currently use.\n\nI enjoy creating survey forms, talking to students and local shop owners, and analyzing their responses. My goal is to make sure our team builds something that solves a real problem people care about.",
-        expectations: "I expect E-Cell to teach us structured methods for student market research and customer validation.\n\nThrough NEC, I want to learn how to ask the right survey questions, analyze market feedback accurately, and help our team focus on features that real users actually want."
+        motivation: "My motivation comes from market research and talking to potential users. Before building a project, we need to know if people actually need it and what existing solutions they currently use.",
+        expectations: "I expect E-Cell to teach us structured methods for student market research, customer validation, and survey form analysis."
     },
     {
         id: "hasini",
         filename: "NEC_ECell_Motivation_Expectations_Hasini_Yedla.pdf",
         name: "Hasini Yedla",
         role: "User Feedback & Usability Lead (Product Research)",
-        motivation: "I am motivated by user testing and gathering honest feedback. Technology should be easy and natural for anyone to use, not just for engineering students who built it.\n\nI watch how people interact with our prototype, note down where they get confused, and share that feedback with our hardware and software teammates. My goal is to make our project user-friendly and helpful for everyday people.",
-        expectations: "I expect E-Cell to guide us on effective user testing and feedback collection methods for student projects.\n\nI want to learn how to conduct user testing sessions, turn feedback into quick design improvements, and ensure our project makes a positive impact in our community."
+        motivation: "I am motivated by user testing and gathering honest feedback. Technology should be easy and natural for anyone to use, not just for engineering students who built it.",
+        expectations: "I expect E-Cell to guide us on effective user testing sessions, turning feedback into quick design improvements for our project."
     },
     {
         id: "janaki",
         filename: "NEC_ECell_Motivation_Expectations_Bhoomireddi_Janaki.pdf",
         name: "Bhoomireddi Janaki",
         role: "Component & Logistics Lead (Field Operations)",
-        motivation: "My focus is on sourcing electronic components and supplies. Finding the right parts at reasonable prices is essential when working on a student project with a limited budget.\n\nI compare prices across local electronics shops and online vendors, check delivery times, and make sure our team has the parts they need for testing. My motivation is to keep our hardware building schedule running without component delays.",
-        expectations: "I look to E-Cell for advice on sourcing components and finding reliable vendors for student hardware projects.\n\nThrough NEC, I hope to learn how to manage component lists efficiently, find student discounts on parts, and plan sourcing lead times effectively."
-    },
-    {
-        id: "beela",
-        filename: "NEC_ECell_Motivation_Expectations_Yagnasri_Beela.pdf",
-        name: "Yagnasri Beela",
-        role: "Quality Assurance & Fail-Safe QA (Product Engineering)",
-        motivation: "My motivation comes from testing our setup to make sure nothing breaks during demonstrations. In student projects, loose wires or code bugs can cause unexpected failures during presentations.\n\nI run basic testing routines--checking battery connections, testing sensor responses, and verifying that the app doesn't crash. My goal is to ensure our prototype works reliably every time we show it to mentors or judges.",
-        expectations: "I expect E-Cell to guide our team on basic testing practices and quality checks for student prototypes.\n\nI want to learn how to build simple test checklists, prevent hardware short-circuits, and make sure our project is reliable and ready for competition judging."
-    },
-    {
-        id: "ananya",
-        filename: "NEC_ECell_Motivation_Expectations_Ananya_Sharma.pdf",
-        name: "Ananya Sharma",
-        role: "Ground Operations & Field Trial Specialist (Operations)",
-        motivation: "My motivation is on-the-ground execution during field trials. I coordinate field setups, manage safety protocols during testing, and collect real-time performance metrics while our project is operating in public or lab environments.",
-        expectations: "I expect E-Cell to guide our operations team on managing field trial risks, building smooth workflows for student deployments, and handling operational logistics efficiently."
-    },
-    {
-        id: "aditya",
-        filename: "NEC_ECell_Motivation_Expectations_Aditya_Patel.pdf",
-        name: "Aditya Patel",
-        role: "Product Marketing & Social Content Lead (Marketing)",
-        motivation: "I am motivated by spreading the word about our student project through creative digital campaigns, social media posts, and interactive web content. Getting people excited about our startup idea is what drives me every day.",
-        expectations: "I look to E-Cell for mentorship on digital branding strategy, marketing automation for early-stage student startups, and building an engaged audience."
-    },
-    {
-        id: "vikramaditya",
-        filename: "NEC_ECell_Motivation_Expectations_Vikramaditya_Verma.pdf",
-        name: "Vikramaditya Verma",
-        role: "External Relations & Partner Manager (Commercial Strategy)",
-        motivation: "My drive comes from connecting our startup team with industry partners, external mentors, and potential student investors. I focus on expanding our network and building strong relationships outside college.",
-        expectations: "I expect E-Cell IIT Bombay to connect Team Titan with corporate incubators, angel investor networks, and industry leaders to help scale our student prototype."
+        motivation: "My focus is on sourcing electronic components and supplies. Finding the right parts at reasonable prices is essential when working on a student project with a limited budget.",
+        expectations: "I look to E-Cell for advice on sourcing components, finding reliable vendors for student hardware projects, and managing supply lead times."
     }
 ];
 
