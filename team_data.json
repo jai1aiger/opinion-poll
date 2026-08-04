@@ -35,17 +35,17 @@
         "id": "a_sai_padma",
         "filename": "NEC_ECell_Motivation_Expectations_A_Sai_Padma.pdf",
         "name": "A. Sai Padma",
-        "role": "ML Engineer & Full-Stack Developer (Product Engineering)",
+        "role": "ML Engineer & Web UI Designer (Product Marketing & Dev)",
         "motivation": "My passion spans ML model training, full-stack web development, and predictive analytics, as demonstrated in my E-Commerce Delivery Prediction project for tracking on-time vs. delayed shipments using Python, SQL, and PowerBI.",
         "expectations": "I expect E-Cell to guide us on deploying production-ready ML models, structuring full-stack web apps, and optimizing user interfaces."
     },
     {
-        "id": "govindu_ground",
-        "filename": "NEC_ECell_Motivation_Expectations_Govindu.pdf",
-        "name": "Govindu",
-        "role": "Data Analyst & Ground Executive (Operations & R&D)",
-        "motivation": "I am motivated by ground execution and data analytics, having worked on impactful projects like Kisan Seva (Leaf Disease Detection) and E-Commerce Dashboards using Python, Excel, PowerBI, and AI tools.",
-        "expectations": "I expect E-Cell to provide practical training on field data collection, ground trial operations, and analytical decision-making for student startups."
+        "id": "govindu",
+        "filename": "NEC_ECell_Motivation_Expectations_Lokavarapu_Govindu.pdf",
+        "name": "Lokavarapu Govindu",
+        "role": "Data Analyst & Finance Manager (Operations & Budgeting)",
+        "motivation": "I am motivated by ground execution, project expense tracking, and data analytics, having worked on impactful projects like Kisan Seva (Leaf Disease Detection) and E-Commerce Dashboards using Python, Excel, PowerBI, and AI tools.",
+        "expectations": "I expect E-Cell to provide practical training on field data collection, product manufacturing cost estimation, and small startup budget management."
     },
     {
         "id": "subhashini_ranga",
@@ -57,22 +57,14 @@
     },
     {
         "id": "m_rajesh",
-        "filename": "NEC_ECell_Motivation_Expectations_M_Rajesh.pdf",
-        "name": "M. Rajesh",
-        "role": "Digital Marketing & Video Production Lead (Marketing)",
-        "motivation": "I am driven by digital marketing, screenplay/scriptwriting, Direction of Photography (DOP), and basic video editing. I enjoy creating engaging promotional videos and Web content using HTML, CSS, Python, and media tools.",
-        "expectations": "I look to E-Cell for mentorship on digital media campaigns, video production storytelling, and marketing outreach strategies for student ventures."
-    },
-    {
-        "id": "rajesh_madiki",
         "filename": "NEC_ECell_Motivation_Expectations_Madiki_Rajesh.pdf",
         "name": "Madiki Rajesh",
-        "role": "Hardware & Electronics Specialist (Product Engineering)",
-        "motivation": "My passion is working hands-on with hardware--soldering microcontrollers, connecting sensors on breadboards, and testing circuits in our lab. Last month, I spent hours troubleshooting a loose wire connection on our sensor module, which taught me that building a working prototype takes a lot of patience. A breadboard setup on a lab desk is just the first step.\n\nWorking on this student startup isn't about flashy titles for me; it's about the excitement of seeing a circuit board actually work and solve a real problem. I want to keep experimenting, learning from mistakes, and building reliable hardware with our team.",
-        "expectations": "I expect E-Cell to help us move beyond basic breadboard setups. In college labs we learn basic theory, but we rarely learn how to design clean custom PCBs or source affordable electronic components on a tight student budget.\n\nThrough NEC, I want to get practical advice from hardware mentors, learn how to design better enclosures for our project, and figure out how student teams can build durable hardware prototypes without overspending."
+        "role": "Hardware & Electronics Lead (Product Engineering)",
+        "motivation": "My passion is working hands-on with hardware--soldering microcontrollers, connecting sensors on breadboards, and testing circuits in our lab. I also engage in video production, screenplay writing, and media content creation for our project promotions.",
+        "expectations": "I expect E-Cell to help us move beyond basic breadboard setups, design custom PCBs, and guide us on creating high-impact media pitch videos."
     },
     {
-        "id": "lokesh_firmware",
+        "id": "lokesh",
         "filename": "NEC_ECell_Motivation_Expectations_Sivarathri_Lokesh.pdf",
         "name": "Sivarathri Lokesh",
         "role": "Software & Firmware Developer (Product Engineering)",
@@ -80,7 +72,7 @@
         "expectations": "I expect NEC to help me learn best practices for hosting our web backend affordably, connecting hardware data smoothly, and turning a student coding project into a functional app under the guidance of tech mentors."
     },
     {
-        "id": "tarun_ops",
+        "id": "tarun_dasari",
         "filename": "NEC_ECell_Motivation_Expectations_Tarun_Kumar_Dasari.pdf",
         "name": "Tarun Kumar Dasari",
         "role": "Field Execution Lead (Operations & Groundwork)",
@@ -88,7 +80,7 @@
         "expectations": "I expect E-Cell to teach us how to conduct field tests systematically. As students, we know how to build a basic model, but we need to learn how to gather proper user feedback and improve our design based on real-world usage."
     },
     {
-        "id": "sanjay_outreach",
+        "id": "sanjay",
         "filename": "NEC_ECell_Motivation_Expectations_Sanjay_Kumar_Pedini.pdf",
         "name": "Sanjay Kumar Pedini",
         "role": "Pitch & Communication Lead (Commercial Strategy)",
@@ -96,27 +88,35 @@
         "expectations": "I expect E-Cell to help me improve my presentation and storytelling skills. I want to learn how to build a clean, effective student pitch deck and explain our project clearly to judges and mentors."
     },
     {
-        "id": "saipadma_ui",
-        "filename": "NEC_ECell_Motivation_Expectations_Althi_Saipadma.pdf",
-        "name": "Althi Saipadma",
-        "role": "Visual & Web UI Support (Product Marketing)",
-        "motivation": "My motivation comes from design and digital media. I enjoy creating posters on Canva, managing our team's social media pages, and designing a simple, clean web interface for our project.",
-        "expectations": "I look to E-Cell for guidance on simple UI/UX design principles and digital outreach for student startups."
+        "id": "mohan",
+        "filename": "NEC_ECell_Motivation_Expectations_Tanara_Mohan.pdf",
+        "name": "Tanara Mohan",
+        "role": "Hardware Assembly & Fabrication (Product Engineering)",
+        "motivation": "Working in the hardware section alongside Rajesh, my drive comes from physical assembly and soldering. I focus on mounting components securely, cutting project boxes, and organizing our lab tools so that everything stays neat and safe.",
+        "expectations": "I expect E-Cell to teach us practical hardware assembly techniques and safety measures for student projects, helping us build durable enclosures on a student budget."
     },
     {
-        "id": "govindu_finance",
-        "filename": "NEC_ECell_Motivation_Expectations_Lokavarapu_Govindu.pdf",
-        "name": "Lokavarapu Govindu",
-        "role": "Product Budget & Finance Analyst (Commercial Strategy)",
-        "motivation": "My interest is in tracking our team's project expenses and budgeting. I keep track of component costs and help calculate how much our product would cost if we produced it for real users.",
-        "expectations": "I expect NEC to teach us how to estimate product manufacturing costs, manage small project budgets efficiently, and understand how student startups can apply for small grants."
+        "id": "pavani",
+        "filename": "NEC_ECell_Motivation_Expectations_Bathula_Chinmai_Pavani.pdf",
+        "name": "Bathula Chinmai Pavani",
+        "role": "Market Survey & User Insights Lead (Product Research)",
+        "motivation": "My motivation comes from market research and talking to potential users. Before building a project, we need to know if people actually need it and what existing solutions they currently use.",
+        "expectations": "I expect E-Cell to teach us structured methods for student market research, customer validation, and survey form analysis."
     },
     {
-        "id": "vikramaditya",
-        "filename": "NEC_ECell_Motivation_Expectations_Vikramaditya_Verma.pdf",
-        "name": "Vikramaditya Verma",
-        "role": "External Relations & Partner Manager (Commercial Strategy)",
-        "motivation": "My drive comes from connecting our startup team with industry partners, external mentors, and potential student investors. I focus on expanding our network and building strong relationships outside college.",
-        "expectations": "I expect E-Cell IIT Bombay to connect Team Titan with corporate incubators, angel investor networks, and industry leaders to help scale our student prototype."
+        "id": "hasini",
+        "filename": "NEC_ECell_Motivation_Expectations_Hasini_Yedla.pdf",
+        "name": "Hasini Yedla",
+        "role": "User Feedback & Usability Lead (Product Research)",
+        "motivation": "I am motivated by user testing and gathering honest feedback. Technology should be easy and natural for anyone to use, not just for engineering students who built it.",
+        "expectations": "I expect E-Cell to guide us on effective user testing sessions, turning feedback into quick design improvements for our project."
+    },
+    {
+        "id": "janaki",
+        "filename": "NEC_ECell_Motivation_Expectations_Bhoomireddi_Janaki.pdf",
+        "name": "Bhoomireddi Janaki",
+        "role": "Component & Logistics Lead (Field Operations)",
+        "motivation": "My focus is on sourcing electronic components and supplies. Finding the right parts at reasonable prices is essential when working on a student project with a limited budget.",
+        "expectations": "I look to E-Cell for advice on sourcing components, finding reliable vendors for student hardware projects, and managing supply lead times."
     }
 ]
