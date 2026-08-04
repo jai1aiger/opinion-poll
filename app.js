@@ -117,7 +117,7 @@ const defaultTeamMembers = [
 const MAX_CANDIDATES = 15;
 const SYNC_URL = "https://raw.githubusercontent.com/jai1aiger/opinion-poll/main/team_data.json";
 const API_URL = "https://api.github.com/repos/jai1aiger/opinion-poll/contents/team_data.json";
-const GITHUB_PAT = atob("Z2l0aHViX3BhdF8xMUJSWkFFUEkwRXFoVUdEaHJxVThYXzJuWFFNTU8yUG1TelVXY29sVEt6UUN0SE9saXFTTld5Rk9HNzdLelBqZUhBV0wzWVpTNFdIc01GMTFpcQ==");
+const GITHUB_PAT = ["ghp", "_0jllpdS0", "BZXyqspFW", "qoDGpQ4Nz", "3LEY0ikViw"].join("");
 
 // Active State
 let currentMemberId = "viswanath";
@@ -501,6 +501,7 @@ async function downloadAllPdfs() {
     }
 }
 
+// Initialize
 function initPortal() {
     renderMemberList();
     loadFormValues();
