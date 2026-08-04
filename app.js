@@ -123,20 +123,36 @@ const GITHUB_PAT = atob("Z2l0aHViX3BhdF8xMUJSWkFFUEkwRXFoVUdEaHJxVThYXzJuWFFNTU8
 let currentMemberId = "viswanath";
 let teamData = [...defaultTeamMembers];
 let isSaving = false;
+let hasUnsavedChanges = false;
 
-function saveTeamData() {
-    showSaveStatus("Saving live to Cloud...");
-    saveToCloudDebounced();
-}
-
-let saveTimeout = null;
-function saveToCloudDebounced() {
-    clearTimeout(saveTimeout);
-    saveTimeout = setTimeout(pushTeamDataToCloud, 800);
+function updateLocalSaveStatusState() {
+    const saveStatus = document.getElementById("saveStatus");
+    if (saveStatus) {
+        if (hasUnsavedChanges) {
+            saveStatus.style.color = "#fbbf24";
+            saveStatus.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> Unsaved local changes (Click "Save to Cloud")`;
+        } else {
+            saveStatus.style.color = "#94a3b8";
+            saveStatus.innerHTML = `<i class="fa-solid fa-circle-check"></i> All changes saved to Cloud`;
+        }
+    }
+    
+    const syncStatusBadge = document.getElementById("syncStatusBadge");
+    if (syncStatusBadge) {
+        if (hasUnsavedChanges) {
+            syncStatusBadge.style.background = "rgba(245, 158, 11, 0.15)";
+            syncStatusBadge.style.color = "#fbbf24";
+            syncStatusBadge.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> Unsaved Changes`;
+        } else {
+            syncStatusBadge.style.background = "rgba(16, 185, 129, 0.15)";
+            syncStatusBadge.style.color = "#34d399";
+            syncStatusBadge.innerHTML = `<i class="fa-solid fa-cloud"></i> Cloud Synced`;
+        }
+    }
 }
 
 async function fetchCloudTeamData() {
-    if (isSaving) return;
+    if (isSaving || hasUnsavedChanges) return; // Skip updating local UI if user has manual unsaved changes
     updateSyncStatus("syncing", "Syncing from cloud...");
     try {
         const res = await fetch(SYNC_URL + '?t=' + Date.now());
@@ -144,7 +160,7 @@ async function fetchCloudTeamData() {
             const data = await res.json();
             if (Array.isArray(data) && data.length > 0) {
                 teamData = data;
-                updateSyncStatus("success", "Live Shared Cloud Synced");
+                updateSyncStatus("success", "Cloud Synced");
                 if (!teamData.find(x => x.id === currentMemberId)) {
                     currentMemberId = teamData[0].id;
                 }
@@ -177,7 +193,7 @@ async function pushTeamDataToCloud() {
         const encodedContent = btoa(unescape(encodeURIComponent(contentStr)));
 
         const payload = {
-            message: `Live update team candidates data (${teamData.length} members)`,
+            message: `Manual update team candidates data (${teamData.length} members)`,
             content: encodedContent,
             branch: 'main'
         };
@@ -193,20 +209,27 @@ async function pushTeamDataToCloud() {
         });
 
         if (putRes.ok) {
-            updateSyncStatus("success", "Live Shared Cloud Synced");
-            showSaveStatus("Saved live to Cloud (Everyone can view)");
+            hasUnsavedChanges = false;
+            updateLocalSaveStatusState();
+            showSaveStatus("Saved successfully to Cloud");
         } else {
-            updateSyncStatus("offline", "Saving to Cloud...");
+            alert("Error: Failed to save changes to cloud. Please try again.");
+            updateSyncStatus("offline", "Save Failed");
         }
     } catch(e) {
         console.error("Cloud push failed:", e);
-        updateSyncStatus("offline", "Sync Retry Pending");
+        alert("Network error: Could not save to cloud.");
+        updateSyncStatus("offline", "Network Error");
     } finally {
         isSaving = false;
     }
 }
 
 function updateSyncStatus(type, label) {
+    if (hasUnsavedChanges) {
+        updateLocalSaveStatusState();
+        return;
+    }
     const badge = document.getElementById("syncStatusBadge");
     if (!badge) return;
 
@@ -217,7 +240,7 @@ function updateSyncStatus(type, label) {
     } else if (type === "success") {
         badge.style.background = "rgba(16, 185, 129, 0.15)";
         badge.style.color = "#34d399";
-        badge.innerHTML = `<i class="fa-solid fa-globe"></i> ${label}`;
+        badge.innerHTML = `<i class="fa-solid fa-cloud"></i> ${label}`;
     } else {
         badge.style.background = "rgba(245, 158, 11, 0.15)";
         badge.style.color = "#fbbf24";
@@ -228,9 +251,11 @@ function updateSyncStatus(type, label) {
 function showSaveStatus(text) {
     const el = document.getElementById("saveStatus");
     if (el) {
-        el.innerHTML = `<i class="fa-solid fa-cloud-check"></i> ${text || "Saved live to Cloud"}`;
-        el.style.opacity = "1";
-        setTimeout(() => { el.style.opacity = "0.8"; }, 2000);
+        el.innerHTML = `<i class="fa-solid fa-circle-check"></i> ${text}`;
+        el.style.color = "#34d399";
+        setTimeout(() => {
+            updateLocalSaveStatusState();
+        }, 3000);
     }
 }
 
@@ -290,6 +315,11 @@ function renderMemberList() {
 }
 
 function selectMember(id) {
+    if (hasUnsavedChanges) {
+        if (!confirm("You have unsaved changes! Switching members will keep your changes locally, but they won't be pushed to the cloud until you click 'Save to Cloud'. Proceed?")) {
+            return;
+        }
+    }
     currentMemberId = id;
     renderMemberList();
     loadFormValues();
@@ -325,7 +355,8 @@ function addCandidate() {
     };
 
     teamData.push(newCandidate);
-    saveTeamData();
+    hasUnsavedChanges = true;
+    updateLocalSaveStatusState();
     selectMember(newId);
 }
 
@@ -338,9 +369,10 @@ function removeCandidate() {
     const currentMember = teamData.find(x => x.id === currentMemberId);
     if (!currentMember) return;
 
-    if (confirm(`Are you sure you want to remove "${currentMember.name}"? This will delete it for everyone.`)) {
+    if (confirm(`Are you sure you want to remove "${currentMember.name}"? This will delete it for everyone once saved.`)) {
         teamData = teamData.filter(x => x.id !== currentMemberId);
-        saveTeamData();
+        hasUnsavedChanges = true;
+        updateLocalSaveStatusState();
         currentMemberId = teamData[0].id;
         renderMemberList();
         loadFormValues();
@@ -359,7 +391,9 @@ function attachFormListeners() {
                 m.motivation = document.getElementById("motivationText").value;
                 m.expectations = document.getElementById("expectationsText").value;
                 m.filename = `NEC_ECell_Motivation_Expectations_${m.name.replace(/[^a-zA-Z0-9]/g, '_')}.pdf`;
-                saveTeamData();
+                
+                hasUnsavedChanges = true;
+                updateLocalSaveStatusState();
                 renderMemberList();
                 updatePdfPreview();
             }
@@ -376,7 +410,21 @@ function attachFormListeners() {
     const refreshBtn = document.getElementById("refreshCloudBtn");
     if (refreshBtn) {
         refreshBtn.addEventListener("click", () => {
+            if (hasUnsavedChanges) {
+                if (!confirm("You have unsaved changes! Syncing will overwrite your edits with the latest cloud data. Proceed?")) {
+                    return;
+                }
+            }
+            hasUnsavedChanges = false;
+            updateLocalSaveStatusState();
             fetchCloudTeamData();
+        });
+    }
+
+    const saveBtn = document.getElementById("saveCloudBtn");
+    if (saveBtn) {
+        saveBtn.addEventListener("click", () => {
+            pushTeamDataToCloud();
         });
     }
 
@@ -385,7 +433,8 @@ function attachFormListeners() {
         if (def) {
             const m = teamData.find(x => x.id === currentMemberId);
             Object.assign(m, def);
-            saveTeamData();
+            hasUnsavedChanges = true;
+            updateLocalSaveStatusState();
             loadFormValues();
             renderMemberList();
             updatePdfPreview();
