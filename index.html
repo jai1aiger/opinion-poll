@@ -70,7 +70,7 @@
                     <div class="card form-card">
                         <div class="card-header">
                             <h2><i class="fa-solid fa-user-gear"></i> Member Profile & Role Description</h2>
-                            <span class="save-status" id="saveStatus"><i class="fa-solid fa-cloud-arrow-up"></i> Auto-saved live to Cloud</span>
+                            <span class="save-status" id="saveStatus" style="color: #94a3b8; font-weight: 500;"><i class="fa-solid fa-circle-info"></i> Local changes (Click "Save to Cloud" to sync)</span>
                         </div>
                         <form id="profileForm">
                             <div class="form-row">
@@ -101,6 +101,9 @@
                                     <i class="fa-solid fa-trash-can"></i> Remove Candidate
                                 </button>
                                 <button type="button" class="btn btn-secondary" id="resetBtn"><i class="fa-solid fa-rotate-left"></i> Reset to Default</button>
+                                <button type="button" class="btn" id="saveCloudBtn" style="background-color: #10b981; color: white;">
+                                    <i class="fa-solid fa-cloud-arrow-up"></i> Save to Cloud
+                                </button>
                                 <button type="button" class="btn btn-primary" id="downloadPdfBtn"><i class="fa-solid fa-download"></i> Generate & Download My PDF</button>
                             </div>
                         </form>
