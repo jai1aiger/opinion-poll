@@ -24,12 +24,12 @@
                 <i class="fa-solid fa-rocket logo-icon"></i>
                 <div>
                     <h1>Team Titan - NEC 2026 Portal</h1>
-                    <p class="subtitle">National Entrepreneurship Challenge | E-Cell, IIT Bombay</p>
+                    <p class="subtitle">National Entrepreneurship Challenge | E-Cell, IIT Bombay | Team ID: NEC2679603</p>
                 </div>
             </div>
             <div class="header-actions">
-                <span class="badge"><i class="fa-solid fa-users"></i> 12 Team Members</span>
-                <button class="btn btn-outline" id="exportAllBtn"><i class="fa-solid fa-file-pdf"></i> Download All 12 PDFs</button>
+                <span class="badge" id="headerMemberBadge"><i class="fa-solid fa-users"></i> 12 Team Members</span>
+                <button class="btn btn-outline" id="exportAllBtn"><i class="fa-solid fa-file-pdf"></i> Download All PDFs</button>
             </div>
         </header>
 
@@ -40,6 +40,9 @@
                 <div class="sidebar-header">
                     <h3><i class="fa-solid fa-list-check"></i> Select Your Name</h3>
                     <p>Click your name to edit your PDF details</p>
+                    <button class="btn btn-primary btn-block" id="addCandidateBtn" style="margin-top: 12px; font-size: 13px;">
+                        <i class="fa-solid fa-user-plus"></i> Add Candidate (<span id="candidateCount">12</span>/15)
+                    </button>
                 </div>
                 <ul class="member-list" id="memberList">
                     <!-- Member items populated by JS -->
@@ -86,6 +89,9 @@
                             </div>
 
                             <div class="form-actions">
+                                <button type="button" class="btn btn-danger-outline" id="deleteMemberBtn" style="display: none; margin-right: auto;">
+                                    <i class="fa-solid fa-trash-can"></i> Remove Candidate
+                                </button>
                                 <button type="button" class="btn btn-secondary" id="resetBtn"><i class="fa-solid fa-rotate-left"></i> Reset to Default</button>
                                 <button type="button" class="btn btn-primary" id="downloadPdfBtn"><i class="fa-solid fa-download"></i> Generate & Download My PDF</button>
                             </div>
@@ -109,6 +115,8 @@
                                 <div class="pdf-divider"></div>
                             </div>
                             <div class="pdf-meta">
+                                <p><strong>Team Name:</strong> Team Titan</p>
+                                <p><strong>Team ID:</strong> NEC2679603</p>
                                 <p><strong>Name:</strong> <span id="pdfName"></span></p>
                                 <p><strong>Team Role:</strong> <span id="pdfRole"></span></p>
                             </div>
