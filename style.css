@@ -422,6 +422,23 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
     font-size: 12px;
 }
 
+.btn-disabled {
+    background-color: #334155 !important;
+    color: #64748b !important;
+    cursor: not-allowed !important;
+    border-color: transparent !important;
+}
+
+.btn-danger-outline {
+    background: transparent;
+    border: 1px solid var(--danger);
+    color: #fca5a5;
+}
+
+.btn-danger-outline:hover {
+    background: rgba(239, 68, 68, 0.15);
+}
+
 /* PDF Preview Container */
 .preview-actions {
     display: flex;
