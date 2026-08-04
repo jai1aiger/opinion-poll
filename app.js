@@ -98,6 +98,8 @@ const defaultTeamMembers = [
     }
 ];
 
+const MAX_CANDIDATES = 15;
+
 // Active State
 let currentMemberId = "viswanath";
 let teamData = loadTeamData();
@@ -107,7 +109,7 @@ function loadTeamData() {
     if (saved) {
         try { return JSON.parse(saved); } catch(e) {}
     }
-    return defaultTeamMembers;
+    return [...defaultTeamMembers];
 }
 
 function saveTeamData() {
@@ -117,8 +119,10 @@ function saveTeamData() {
 
 function showSaveStatus() {
     const el = document.getElementById("saveStatus");
-    el.style.opacity = "1";
-    setTimeout(() => { el.style.opacity = "0.7"; }, 1500);
+    if (el) {
+        el.style.opacity = "1";
+        setTimeout(() => { el.style.opacity = "0.7"; }, 1500);
+    }
 }
 
 function renderMemberList() {
@@ -131,11 +135,49 @@ function renderMemberList() {
         li.onclick = () => selectMember(m.id);
         
         li.innerHTML = `
-            <div class="member-name">${m.name}</div>
-            <span class="member-role-badge">${m.role}</span>
+            <div class="member-name">${escapeHtml(m.name)}</div>
+            <span class="member-role-badge">${escapeHtml(m.role)}</span>
         `;
         listEl.appendChild(li);
     });
+
+    // Update candidate count & badges
+    const countEl = document.getElementById("candidateCount");
+    if (countEl) countEl.textContent = teamData.length;
+
+    const addBtn = document.getElementById("addCandidateBtn");
+    if (addBtn) {
+        if (teamData.length >= MAX_CANDIDATES) {
+            addBtn.disabled = true;
+            addBtn.classList.add("btn-disabled");
+            addBtn.innerHTML = `<i class="fa-solid fa-user-xmark"></i> Max Limit Reached (15/15)`;
+        } else {
+            addBtn.disabled = false;
+            addBtn.classList.remove("btn-disabled");
+            addBtn.innerHTML = `<i class="fa-solid fa-user-plus"></i> Add Candidate (<span id="candidateCount">${teamData.length}</span>/15)`;
+        }
+    }
+
+    const headerBadge = document.getElementById("headerMemberBadge");
+    if (headerBadge) {
+        headerBadge.innerHTML = `<i class="fa-solid fa-users"></i> ${teamData.length} Team Members`;
+    }
+
+    const exportBtn = document.getElementById("exportAllBtn");
+    if (exportBtn) {
+        exportBtn.innerHTML = `<i class="fa-solid fa-file-pdf"></i> Download All ${teamData.length} PDFs`;
+    }
+
+    // Toggle delete candidate button
+    const deleteBtn = document.getElementById("deleteMemberBtn");
+    if (deleteBtn) {
+        const currentMember = teamData.find(x => x.id === currentMemberId);
+        if (currentMember && (currentMember.isCustom || teamData.length > 12)) {
+            deleteBtn.style.display = "inline-flex";
+        } else {
+            deleteBtn.style.display = "none";
+        }
+    }
 }
 
 function selectMember(id) {
@@ -155,6 +197,48 @@ function loadFormValues() {
     document.getElementById("expectationsText").value = m.expectations;
 }
 
+function addCandidate() {
+    if (teamData.length >= MAX_CANDIDATES) {
+        alert("Maximum limit of 15 team members / candidates reached!");
+        return;
+    }
+
+    const candidateNum = teamData.length + 1;
+    const newId = `candidate_${Date.now()}`;
+    const newCandidate = {
+        id: newId,
+        filename: `NEC_ECell_Motivation_Expectations_Candidate_${candidateNum}.pdf`,
+        name: `Candidate ${candidateNum}`,
+        role: `Team Member (Student)`,
+        motivation: `As a student member of Team Titan, my motivation comes from working collaboratively on our startup project, testing solutions, and taking on challenges to deliver a meaningful result.`,
+        expectations: `I expect E-Cell IIT Bombay to provide mentorship, guidance on startup execution, and opportunities to present our work effectively.`,
+        isCustom: true
+    };
+
+    teamData.push(newCandidate);
+    saveTeamData();
+    selectMember(newId);
+}
+
+function removeCandidate() {
+    if (teamData.length <= 1) {
+        alert("At least one candidate must remain in the team!");
+        return;
+    }
+
+    const currentMember = teamData.find(x => x.id === currentMemberId);
+    if (!currentMember) return;
+
+    if (confirm(`Are you sure you want to remove "${currentMember.name}"?`)) {
+        teamData = teamData.filter(x => x.id !== currentMemberId);
+        saveTeamData();
+        currentMemberId = teamData[0].id;
+        renderMemberList();
+        loadFormValues();
+        updatePdfPreview();
+    }
+}
+
 function attachFormListeners() {
     const inputs = ["memberName", "memberRole", "motivationText", "expectationsText"];
     inputs.forEach(id => {
@@ -165,12 +249,20 @@ function attachFormListeners() {
                 m.role = document.getElementById("memberRole").value;
                 m.motivation = document.getElementById("motivationText").value;
                 m.expectations = document.getElementById("expectationsText").value;
+                m.filename = `NEC_ECell_Motivation_Expectations_${m.name.replace(/[^a-zA-Z0-9]/g, '_')}.pdf`;
                 saveTeamData();
                 renderMemberList();
                 updatePdfPreview();
             }
         });
     });
+
+    document.getElementById("addCandidateBtn").addEventListener("click", addCandidate);
+    
+    const deleteBtn = document.getElementById("deleteMemberBtn");
+    if (deleteBtn) {
+        deleteBtn.addEventListener("click", removeCandidate);
+    }
 
     document.getElementById("resetBtn").addEventListener("click", () => {
         const def = defaultTeamMembers.find(x => x.id === currentMemberId);
@@ -181,6 +273,8 @@ function attachFormListeners() {
             loadFormValues();
             renderMemberList();
             updatePdfPreview();
+        } else {
+            alert("This candidate was added manually. Reset applies to default profiles.");
         }
     });
 
@@ -234,7 +328,7 @@ function downloadCurrentPdf() {
 }
 
 async function downloadAllPdfs() {
-    alert("Starting download of all 12 team member PDFs sequentially...");
+    alert(`Starting download of all ${teamData.length} team member PDFs sequentially...`);
     for (let i = 0; i < teamData.length; i++) {
         selectMember(teamData[i].id);
         await new Promise(r => setTimeout(r, 600));
