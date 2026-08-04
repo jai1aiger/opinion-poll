@@ -155,7 +155,7 @@ async function fetchCloudTeamData() {
     if (isSaving || hasUnsavedChanges) return; // Skip updating local UI if user has manual unsaved changes
     updateSyncStatus("syncing", "Syncing from cloud...");
     try {
-        const res = await fetch(SYNC_URL + '?t=' + Date.now());
+        const res = await fetch(SYNC_URL + '?t=' + Date.now(), { cache: "no-store" });
         if (res.ok) {
             const data = await res.json();
             if (Array.isArray(data) && data.length > 0) {
@@ -182,11 +182,18 @@ async function pushTeamDataToCloud() {
     try {
         let sha = "";
         const getRes = await fetch(API_URL + '?t=' + Date.now(), {
-            headers: { 'Authorization': `Bearer ${GITHUB_PAT}` }
+            cache: 'no-store',
+            headers: { 
+                'Authorization': `Bearer ${GITHUB_PAT}`,
+                'Accept': 'application/vnd.github+json'
+            }
         });
         if (getRes.ok) {
             const getInfo = await getRes.json();
             sha = getInfo.sha;
+        } else {
+            const errText = await getRes.text();
+            console.error("GET SHA failed:", getRes.status, errText);
         }
 
         const contentStr = JSON.stringify(teamData, null, 4);
@@ -203,7 +210,8 @@ async function pushTeamDataToCloud() {
             method: 'PUT',
             headers: {
                 'Authorization': `Bearer ${GITHUB_PAT}`,
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': 'application/vnd.github+json'
             },
             body: JSON.stringify(payload)
         });
@@ -213,12 +221,14 @@ async function pushTeamDataToCloud() {
             updateLocalSaveStatusState();
             showSaveStatus("Saved successfully to Cloud");
         } else {
-            alert("Error: Failed to save changes to cloud. Please try again.");
+            const errText = await putRes.text();
+            console.error("PUT failed:", putRes.status, errText);
+            alert(`Failed to save to cloud.\nStatus Code: ${putRes.status}\nResponse Message: ${errText}`);
             updateSyncStatus("offline", "Save Failed");
         }
     } catch(e) {
         console.error("Cloud push failed:", e);
-        alert("Network error: Could not save to cloud.");
+        alert(`Network/CORS error occurred: ${e.message}`);
         updateSyncStatus("offline", "Network Error");
     } finally {
         isSaving = false;
