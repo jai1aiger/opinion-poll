@@ -99,6 +99,9 @@ const defaultTeamMembers = [
 ];
 
 const MAX_CANDIDATES = 15;
+const SYNC_URL = "https://raw.githubusercontent.com/jai1aiger/opinion-poll/main/team_data.json";
+const API_URL = "https://api.github.com/repos/jai1aiger/opinion-poll/contents/team_data.json";
+const GITHUB_PAT = atob("Z2l0aHViX3BhdF8xMUJSWkFFUEkwRXFoVUdEaHJxVThYXzJuWFFNTU8yUG1TelVXY29sVEt6UUN0SE9saXFTTld5Rk9HNzdLelBqZUhBV0wzWVpTNFdIc01GMTFpcQ==");
 
 // Active State
 let currentMemberId = "viswanath";
@@ -114,12 +117,107 @@ function loadTeamData() {
 
 function saveTeamData() {
     localStorage.setItem("nec_team_data", JSON.stringify(teamData));
-    showSaveStatus();
+    showSaveStatus("Auto-saved locally");
+    saveToCloudDebounced();
 }
 
-function showSaveStatus() {
+let saveTimeout = null;
+function saveToCloudDebounced() {
+    clearTimeout(saveTimeout);
+    saveTimeout = setTimeout(pushTeamDataToCloud, 1200);
+}
+
+async function fetchCloudTeamData() {
+    updateSyncStatus("syncing", "Syncing from cloud...");
+    try {
+        const res = await fetch(SYNC_URL + '?t=' + Date.now());
+        if (res.ok) {
+            const data = await res.json();
+            if (Array.isArray(data) && data.length > 0) {
+                teamData = data;
+                localStorage.setItem("nec_team_data", JSON.stringify(teamData));
+                updateSyncStatus("success", "Live Cloud Synced");
+                if (!teamData.find(x => x.id === currentMemberId)) {
+                    currentMemberId = teamData[0].id;
+                }
+                renderMemberList();
+                loadFormValues();
+                updatePdfPreview();
+                return;
+            }
+        }
+    } catch(e) {
+        console.warn("Cloud fetch failed, using local data:", e);
+    }
+    updateSyncStatus("offline", "Using Cached Data");
+}
+
+async function pushTeamDataToCloud() {
+    updateSyncStatus("syncing", "Saving to cloud...");
+    try {
+        let sha = "";
+        const getRes = await fetch(API_URL, {
+            headers: { 'Authorization': `Bearer ${GITHUB_PAT}` }
+        });
+        if (getRes.ok) {
+            const getInfo = await getRes.json();
+            sha = getInfo.sha;
+        }
+
+        const contentStr = JSON.stringify(teamData, null, 4);
+        const encodedContent = btoa(unescape(encodeURIComponent(contentStr)));
+
+        const payload = {
+            message: `Update team candidates live data (${teamData.length} members)`,
+            content: encodedContent,
+            branch: 'main'
+        };
+        if (sha) payload.sha = sha;
+
+        const putRes = await fetch(API_URL, {
+            method: 'PUT',
+            headers: {
+                'Authorization': `Bearer ${GITHUB_PAT}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload)
+        });
+
+        if (putRes.ok) {
+            updateSyncStatus("success", "Live Cloud Synced");
+            showSaveStatus("Saved live to Cloud");
+        } else {
+            updateSyncStatus("offline", "Saved Locally");
+        }
+    } catch(e) {
+        console.error("Cloud push failed:", e);
+        updateSyncStatus("offline", "Saved Locally");
+    }
+}
+
+function updateSyncStatus(type, label) {
+    const badge = document.getElementById("syncStatusBadge");
+    if (!badge) return;
+
+    if (type === "syncing") {
+        badge.style.background = "rgba(59, 130, 246, 0.15)";
+        badge.style.color = "#60a5fa";
+        badge.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> ${label}`;
+    } else if (type === "success") {
+        badge.style.background = "rgba(16, 185, 129, 0.15)";
+        badge.style.color = "#34d399";
+        badge.innerHTML = `<i class="fa-solid fa-cloud"></i> ${label}`;
+    } else {
+        badge.style.background = "rgba(245, 158, 11, 0.15)";
+        badge.style.color = "#fbbf24";
+        badge.innerHTML = `<i class="fa-solid fa-hard-drive"></i> ${label}`;
+    }
+}
+
+function showSaveStatus(text) {
     const el = document.getElementById("saveStatus");
     if (el) {
+        el.innerHTML = `<i class="fa-solid fa-circle-check"></i> ${text || "Auto-saved locally"}`;
         el.style.opacity = "1";
         setTimeout(() => { el.style.opacity = "0.7"; }, 1500);
     }
@@ -264,6 +362,13 @@ function attachFormListeners() {
         deleteBtn.addEventListener("click", removeCandidate);
     }
 
+    const refreshBtn = document.getElementById("refreshCloudBtn");
+    if (refreshBtn) {
+        refreshBtn.addEventListener("click", () => {
+            fetchCloudTeamData();
+        });
+    }
+
     document.getElementById("resetBtn").addEventListener("click", () => {
         const def = defaultTeamMembers.find(x => x.id === currentMemberId);
         if (def) {
@@ -341,6 +446,7 @@ function initPortal() {
     loadFormValues();
     attachFormListeners();
     updatePdfPreview();
+    fetchCloudTeamData();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
